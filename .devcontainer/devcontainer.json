@@ -1,0 +1,21 @@
+// Setup for Y13
+// This defaults to the index.html file but doesn't hide all the config files
+// copy the contents into .devcontainer/devcontainer.json
+// .vscode is not needed
+
+{
+    "image": "mcr.microsoft.com/devcontainers/universal:2",
+    "customizations": {
+        "codespaces": {
+            "openFiles": [ // Which file(s) to open by default
+            "index.html"
+            ]
+        },
+        "vscode": {
+            "extensions": [
+                "ritwickdey.LiveServer",  //  Install LiveServer to view pages
+                "vsls-contrib.gitdoc"	// BROKEN Install GitDoc
+            ]
+        }
+    }
+}
