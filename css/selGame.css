@@ -1,0 +1,50 @@
+/*************************************************************
+  selGame.css
+
+  Written by Mr Bob, Term 4 2022
+  Style select game page
+*************************************************************/
+/*-----------------------------------------------------------*
+  Set in page div height. 12% + 78% = 90% 
+  giving space for firebase status at bottom of pages.
+/*----------------------------------------------------------*/
+.hHead {
+  height:  12vh;  /* this div 12% visible screen height */ 
+}
+
+.hMain {
+  height:  75vh;  /* this div 78% visible screen height */ 
+}
+
+/*
+#img_photoURL {
+  width: 50px;
+  height: 50px;
+  margin: 8px;
+}
+*/
+
+/*-----------------------------------------------------------*
+  Select Game page styling
+/*----------------------------------------------------------*/
+#s_selGamePage {
+  display: block;   
+  height:  80vh;   /* this div full screen height */   
+}
+
+.gameSelButton {
+  display: block;    
+}
+
+.gameSelSlides {
+  display: none;    
+  height: 100%;
+  width: 100%;
+  border-style: solid;
+  border-color: lightgrey;
+  object-fit: fill;
+}
+
+/*************************************************************
+/*    END OF CSS
+*************************************************************/

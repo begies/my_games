@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>TANK game</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/x-icon" href="../assets/tg/green_tank.png">
+  
+  <!-- stylesheets *******************************************-->
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="../css/game.css">
+  <link rel="stylesheet" href="../css/tg.css">
+ 
+  
+  <!-- P5.js & P5.play ***************************************-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.8.0/p5.js" 
+    integrity="sha512-bzpp8klYroR6PFgL3RJ+VkvY5hJna7Zd38OA56peUDHSNQpSiN9lDQVnMYtcw7hoAVhbR6mAOdH+ymzg1o+G0A==" 
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.8.0/addons/p5.sound.js" 
+    integrity="sha512-TU9AWtV5uUZPX8dbBAH8NQF1tSdigPRRT82vllAQ1Ke28puiqLA6ZVKxtUGlgrH6yWFnkKy+sE6luNEGH9ar0A==" 
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://p5play.org/v3/planck.min.js"></script>
+  <script src="https://p5play.org/v3/p5play.js"></script>
+
+  <!-- firebase start ****************************************-->
+  <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
+  <!-- Firebase App (core Firebase SDK) always required & must be listed 1st -->
+  <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-app.js"></script>  
+  <!-- Add Firebase products that you want to use -->
+  <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-auth.js"></script>  
+  <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-database.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-analytics.js"></script> 
+  <!-- firebase end ******************************************-->
+  
+  <!-- JQUERY ************************************************-->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  
+  <!-- Your modules ******************************************-->
+  <script defer src="../manager/html_manager.js"></script>
+  
+  <script defer src="../fb/fbD_data.js"></script>
+  <script defer src="../fb/fb_io.js"></script>
+  <script defer src="../fb/fbR_manager.js"></script>
+  
+  <script defer src="../games/tg_game.js"></script>
+</head>
+
+<body class="w3-grey" onload="html_load();">
+  <!--***********************************************************
+			TANK GAME PAGE 
+  ************************************************************-->
+  <header class="w3-container w3-row w3-text-white">
+    <div class="w3-display-container w3-col m12">
+      <img id='img_photoURL' src='../assets/images/dtec_favicon.PNG' 
+        alt="user's profile image">
+  
+      <button id="b_startPause" class="w3-button w3-border  
+              w3-margin-right" onclick="tg_startPause()">START
+      </button>
+      <button id="b_reset" class="w3-button w3-border"
+              onclick="tg_reset()">RESET
+      </button>
+      <button id="b_leaderboard" class="w3-button w3-border"
+              onclick="tg_leaderboard('d')">LEADERBOARD
+      </button>
+      <button id="b_inst" class="w3-button w3-border"
+              onclick="tg_instructions('d')">INSTRUCTIONS
+      </button>
+      <button id='b_admin' class="w3-button w3-border"
+              onclick="window.location = '../html/ad_manager.html'">ADMIN
+      </button>
+      <button id='b_back' class="w3-button w3-border"
+                 onclick="history.back()">BACK
+      </button>
+    </div>
+  </header>
+
+  <!--*********************************************************
+    P5 CANVAS PLACE HOLDER DIV
+  **********************************************************-->
+  <section id="s_gamePage" class="w3-container">
+    <div id="d_canvasPlaceHolder" 
+          class="w3-container w3-row" style="height: 100%; width: 100%;" >
+    </div> 
+  </section>
+
+  <!--***********************************************************
+		LEADER BOARD PAGE 
+  ************************************************************-->
+  <section id="s_leaderbPage" class="s_inst">
+    <div class="w3-container w3-border w3-light-blue hMain">
+      <header id='h_lb' class="w3-display-container w3-col m12 w3-margin-bottom">
+        <h2 class="w3-wide dispInline">TG Leader Board</h2>
+        <button class="w3-button w3-border w3-margin-bottom 
+                       w3-display-right w3-blue dispInline" 
+                onclick="tg_leaderboard('r')">OK
+        </button>
+      </header>
+    </div> 
+  </section>
+  
+  <!--***********************************************************
+		INSTRUCTION PAGE 
+  ************************************************************-->
+  <section id="s_instPage" class="s_inst">
+    <div class="w3-container w3-border w3-light-blue hMain">
+      <header id='h_lb' class="w3-display-container w3-col m12 w3-margin-bottom">
+        <h2 class="w3-wide dispInline">TG Instructions</h2>
+        <button class="w3-button w3-border w3-margin-bottom 
+                       w3-display-right w3-blue dispInline" 
+                onclick="tg_instructions('r')">OK
+        </button>
+      </header>
+
+      <div class="w3-container">
+        <h1>Tank Game: Capture the army base</h1>
+        <h3>
+          Game ends when a player captures the other player's base.
+        </h3>
+        <h3>
+          Tanks require 1 second to reload a round and only have 20 rounds onboard.
+        </h3>
+        <br>
+        <h3>Player 1 uses WASD keys to move and E to fire a round</h3>
+        <h3>Player 2 uses IJKL keys to move and O to fire a round</h3>
+      </div>
+  </section>
+    
+  <!--***********************************************************
+		FIREBASE & DEBUG STATUS
+  ************************************************************-->
+  <footer id="s_fbStatus" class="w3-grey">
+    <div class="w3-padding w3-lightGrey">
+      <p class="p_fbStatus">login:    <span id="p_fbLogin">    n/a</span></p>
+      <p class="p_fbStatus">read rec: <span id="p_fbReadRec">  n/a</span></p>
+      <p class="p_fbStatus">read all: <span id="p_fbReadAll">  n/a</span></p>
+      <p class="p_fbStatus">write:    <span id="p_fbWriteRec"> n/a</span></p>
+      <p class="p_fbStatus">readon:   <span id="p_fbReadOn">   n/a</span></p>
+      <p class="p_fbStatus">update:   <span id="p_fbUpdateRec">n/a</span></p>
+      <p class="p_fbStatus">delete:   <span id="p_fbDeleteRec">n/a</span></p>
+      <p class="p_fbStatus">debug:    <span id="p_debug">      n/a</span></p>
+    </div>
+  </footer>
+
+</body>
+</html>
+<!--*************************************************************
+//  END OF TG_GAME.HTML
+**************************************************************-->

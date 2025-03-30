@@ -1,0 +1,77 @@
+/*************************************************************
+  ad_manager.css
+
+  Written by Mr Bob, Term 4 2022
+  admin page styling
+*************************************************************/
+/*------------------------------------------------------------
+  styling for my implementation
+/*----------------------------------------------------------*/
+html, body {
+  margin: 0px;
+  padding: 0px;
+  font-family: tahoma;
+  color: black;
+  height: 100%;
+}
+
+/*------------------------------------------------------------
+  Firebase status div styling
+/*----------------------------------------------------------*/
+#s_fbStatus {
+  display: block;
+  margin: 0px;
+  padding-top: 4px;
+  font-size: 14px;
+}
+
+.p_fbStatus {
+  display: inline-block;
+  margin: 0px;
+  padding-top: 4px;
+  margin-right: 20px; /* Add some spacing between paragraphs */
+}
+
+/*------------------------------------------------------------
+  ADMIN page styling
+/*----------------------------------------------------------*/
+#s_adminPage {
+  display: block;
+  height: 88vh;
+  overflow: scroll;
+}
+
+table, TD {
+  border: 1px solid;
+}
+
+/*------------------------------------------------------------
+  header styling
+/*----------------------------------------------------------*/
+.header-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 4px 16px;
+}
+
+#img_photoURL {
+  width: 40px;
+  height: 40px;
+  margin: 0px;
+}
+
+.header-title {
+  flex-grow: 1;
+  text-align: center;
+  margin: 0;
+}
+
+#b_back {
+  display: block; 
+  height: 40px;
+}
+
+/*************************************************************
+/*    END OF CSS
+*************************************************************/

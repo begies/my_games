@@ -1,0 +1,70 @@
+/*************************************************************
+  style.css
+
+  Written by Mr Bob, Term 4 2022
+  Style tank game page
+    v1 Basic layout
+*************************************************************/
+html, body {
+    margin: 0px;
+    padding: 0px;
+    font-family: tahoma;
+    color: black;
+    height: 100%;
+  }
+  
+  #b_admin {
+    display: none;
+    float: right;
+  }
+  
+  button {
+    background-color: green;
+    color: white;
+    height: 50px;
+    margin: 8px 8px 8px 8px
+  }
+  
+  canvas {
+    display: block; /* Remove any default spacing around the canvas */
+    /*margin: auto;
+    width: 100%;
+    border: 3px solid #73AD21;*/
+  }
+
+  #d_canvasPlaceHolder {
+    height: 100%;
+    width: 100%;
+  }
+ 
+  /*-----------------------------------------------------------*
+    Set in page div height. 12% + 78% = 90% 
+    giving space for firebase status at bottom of pages.
+  /*----------------------------------------------------------*/
+  .hHead {
+    height:  12vh;  /* this div 12% screen height */ 
+  }
+  
+  .hMain {
+    height:  79vh;  /* this div 78% screen height */ 
+  }
+  
+  #s_gamePage {
+    display: block;   
+    height:  79vh;   /* this div full screen height */   
+  }
+
+  .center {
+    margin: auto;
+    width: 60%;
+    border: 3px solid #73AD21;
+    padding: 10px;
+  }
+  
+  .userRow {
+    font-weight: bold;
+  }
+
+/*************************************************************
+/*    END OF CSS
+*************************************************************/

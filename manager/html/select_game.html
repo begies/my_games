@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>mr Bob's Games</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/x-icon" href="/assets/images/dtec_favicon.PNG">
+  
+  <!-- stylesheets *******************************************-->
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="../css/game.css">
+  <link rel="stylesheet" href="../css/selGame.css">
+
+  <!-- P5.js & P5.play ***************************************-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.8.0/p5.js" 
+    integrity="sha512-bzpp8klYroR6PFgL3RJ+VkvY5hJna7Zd38OA56peUDHSNQpSiN9lDQVnMYtcw7hoAVhbR6mAOdH+ymzg1o+G0A==" 
+    crossorigin="anonymous" 
+    referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.8.0/addons/p5.sound.js" 
+    integrity="sha512-TU9AWtV5uUZPX8dbBAH8NQF1tSdigPRRT82vllAQ1Ke28puiqLA6ZVKxtUGlgrH6yWFnkKy+sE6luNEGH9ar0A==" 
+    crossorigin="anonymous" 
+    referrerpolicy="no-referrer"></script>
+  <script src="https://p5play.org/v3/planck.min.js"></script>
+  <script src="https://p5play.org/v3/p5play.js"></script>
+   
+  <!-- firebase start ****************************************-->
+  <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
+  <!-- firebase end ******************************************-->
+  
+  <!-- JQUERY ************************************************-->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  
+  <!-- Your JS files & main module ***************************-->
+  <script               src="/fb/fbD_data.js"></script>
+  <script type="module" src="/main/select_game_main.mjs"></script>
+</head>
+  
+<!--*************************************************************
+//  BODY
+**************************************************************-->
+<body class="bgImage w3-grey"> 
+  <!--***********************************************************
+			SELECT GAME PAGE 
+  ************************************************************-->
+  <section id="s_selGamePage">
+    <header class="header-container">
+      <img id='img_photoURL' src='../assets/images/dtec_favicon.PNG' 
+           alt="user's profile image">
+      <h1 class="header-title">
+          hi <span id='h_gameName'></span>, select a game
+      </h1>
+      <button class="w3-button w3-border w3-text-white" 
+              onclick="fb_logout();">LOGOUT
+      </button>
+      <button id="b_admin" class="w3-button w3-border w3-text-white" 
+              onclick="window.location = '../html/ad_manager.html'">ADMIN
+      </button>
+    </header>
+
+    <main class="w3-margin-left w3-row">
+      <div class="w3-container w3-third w3-bar-block hMain" 
+           style="background-color: rgb(255,255,255,0.5);">
+        <h3 class="w3-bar-item">Games</h3>
+        <a href="bb_game.html" 
+          class="gameSelButton w3-bar-item w3-button bold">Bouncing Balls</a> 
+        <a href="ca_game.html" 
+           class="gameSelButton w3-bar-item w3-button">Collect Aliens</a>
+        <a href="db_game.html" 
+           class="gameSelButton w3-bar-item w3-button">Dodge the Bacteria</a>
+        <a href="si_game.html" 
+           class="gameSelButton w3-bar-item w3-button">Space Invaders</a>
+        <a href="tg_game.html" 
+           class="gameSelButton w3-bar-item w3-button">Tank Game</a>
+        <a href="gtn_game.html" 
+           class="gameSelButton w3-bar-item w3-button">Guess The Number</a>
+
+        <div class="w3-col 12">
+          <p id='p_msg' class='user'></p>
+        </div>
+      </div>
+    
+      <div class="w3-container w3-twothird hMain">
+        <img class="gameSelSlides" src="../assets/slideShow/bouncingBalls_lowres.gif"
+             style="display: block;">
+        <img class="gameSelSlides" src="../assets/slideShow/aliens.png">
+        <img class="gameSelSlides" src="../assets/slideShow/bacteriaImg.webp">
+        <img class="gameSelSlides" src="../assets/slideShow/SpaceInvaders_lowres.png">
+        <img class="gameSelSlides" src="../assets/slideShow/tankGame.png">
+        <img class="gameSelSlides" src="../assets/slideShow/matrix.gif">
+      </div> 
+    </main>
+  </section>
+  
+  <!--***********************************************************
+			firebase status
+  ************************************************************-->
+  <footer id="s_fbStatus" class="w3-grey">
+    <div class="w3-padding w3-lightGrey">
+      <p class="p_fbStatus">login:    <span id="p_fbLogin">    n/a</span></p>
+      <p class="p_fbStatus">read rec: <span id="p_fbReadRec">  n/a</span></p>
+      <p class="p_fbStatus">read all: <span id="p_fbReadAll">  n/a</span></p>
+      <p class="p_fbStatus">write:    <span id="p_fbWriteRec"> n/a</span></p>
+      <p class="p_fbStatus">readon:   <span id="p_fbReadOn">   n/a</span></p>
+      <p class="p_fbStatus">update:   <span id="p_fbUpdateRec">n/a</span></p>
+      <p class="p_fbStatus">delete:   <span id="p_fbDeleteRec">n/a</span></p>
+      <p class="p_fbStatus">debug:    <span id="p_debug">      n/a</span></p>
+    </div>
+  </footer>
+</body>
+</html>
+<!--*************************************************************
+//  END OF SELECT_GAME.HTML
+**************************************************************-->

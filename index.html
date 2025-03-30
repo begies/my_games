@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>mr Bob's Games</title>
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/x-icon" href="assets/images/dtec_favicon.PNG">
+  
+  <!-- stylesheets *******************************************-->
+  <link rel="stylesheet" type="text/css" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" type="text/css" href="css/index.css">
+   
+  <!-- firebase start ****************************************-->
+  <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
+  <!-- firebase end ******************************************-->
+  
+  <!-- Your JS files & main module ***************************-->
+  <script               src="fb/fbD_data.js"></script>
+  <script type="module" src="main/index_main.mjs"></script>
+</head>
+
+<!--*************************************************************
+  BODY
+**************************************************************-->
+<body class="bgImage w3-container w3-grey">     
+  <!--***********************************************************
+		LANDING PAGE 
+  ************************************************************-->
+  <section id="s_landingPage" >
+    <div class="s_landingContainer">
+      <span class="s_landingText">Welcome</span>
+      <button class="b_login button button1 w3-disabled">     
+        <i class="bi bi-google"></i>Login
+      </button>
+    </div>
+  </section>
+ 
+  <!--***********************************************************
+		FIREBASE & DEBUG STATUS
+  ************************************************************-->
+  <!--<footer id="s_fbStatus" class="w3-grey">-->
+  <footer class="w3-grey">
+    <div class="w3-padding w3-lightGrey">
+      <p class="p_fbStatus">login:   <span id="p_fbLogin">    n/a</span></p>
+      <p class="p_fbStatus">read rec:<span id="p_fbReadRec">  n/a</span></p>
+      <p class="p_fbStatus">read all:<span id="p_fbReadAll">  n/a</span></p>
+      <p class="p_fbStatus">write:   <span id="p_fbWriteRec"> n/a</span></p>
+      <p class="p_fbStatus">readon:  <span id="p_fbReadOn">   n/a</span></p>
+      <p class="p_fbStatus">update:  <span id="p_fbUpdateRec">n/a</span></p>
+      <p class="p_fbStatus">delete:  <span id="p_fbDeleteRec">n/a</span></p>
+      <p class="p_fbStatus">debug:   <span id="p_debug">      n/a</span></p>
+    </div>
+  </footer>
+</body>
+</html>
+<!--*************************************************************
+  END OF INDEX.HTML
+**************************************************************-->

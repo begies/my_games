@@ -1,0 +1,209 @@
+<!--***********************************************************/
+// reg.html
+// 
+// Test registration page
+// Written by Mr Bob 2020
+// v01 Initial code
+// v02 Include reg_getFormItemValue function in reg_manager.js 
+// v03 Add reg_prep function
+// v04 Cut down version
+// v05 Check if form passed html validation via checkValidity() 
+// v07 Alter to be used as standalone html file
+/***********************************************************-->
+<html lang="en">
+<head>
+  <title>mr Bob's Games</title>
+  <meta charset="UTF-8">
+  <meta name="description" content="mr Bob's Games">
+  <meta name="keywords" content="'mr Bob', Games">
+  <meta name="author" content="mr Bob">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/x-icon" href="../assets/images/dtec_favicon.PNG">
+  
+  <!-- stylesheets *******************************************-->
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="../css/game.css">
+  <link rel="stylesheet" href="../css/reg.css">
+  <!-- link below is for the form's 1st 2 icons) *************-->
+  <link rel="stylesheet" 
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  
+  <!-- P5.js & P5.play ***************************************-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.8.0/p5.js" integrity="sha512-bzpp8klYroR6PFgL3RJ+VkvY5hJna7Zd38OA56peUDHSNQpSiN9lDQVnMYtcw7hoAVhbR6mAOdH+ymzg1o+G0A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.8.0/addons/p5.sound.js" integrity="sha512-TU9AWtV5uUZPX8dbBAH8NQF1tSdigPRRT82vllAQ1Ke28puiqLA6ZVKxtUGlgrH6yWFnkKy+sE6luNEGH9ar0A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://p5play.org/v3/planck.min.js"></script>
+  <script src="https://p5play.org/v3/p5play.js"></script>
+  
+  <!-- firebase start ****************************************-->
+  <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
+  <!-- Firebase App (core Firebase SDK) always required & must be listed 1st 
+  <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-app.js"></script>  
+  <!-- Add Firebase products that you want to use 
+  <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-auth.js"></script>  
+  <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-database.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-analytics.js"></script> 
+  <!-- firebase end ******************************************-->
+  
+  <!-- JQUERY ************************************************-->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  
+  <!-- Your modules ******************************************-->
+  <script defer src="/manager/reg_manager.js"></script>
+  <script defer src="/manager/html_manager.js"></script>
+  
+  <script defer src="/fb/fb_data.js"></script>
+  <script defer src="/fb/fb_io.js"></script>
+  <script defer src="/fb/fbR_manager.js"></script>
+</head>
+
+<body onload="html_load(); reg_load();">  
+  <!--**********************************************************
+			REGISTRATION PAGE 
+  ***********************************************************-->
+  <section id="registrationPage">  
+    <main class="w3-container w3-col s12 m12 l12 w3-small">
+      <form id="f_reg" onsubmit="return false;" 
+            class="w3-container w3-card-4 transparentBG">
+        <div class="header-container">
+          <img id='img_photoURL' src='../assets/images/dtec_favicon.PNG' 
+           alt="user's profile image">
+          <div class="header-title">
+            <h1>Register</h1>
+          </div>
+        </div>
+        
+        <div class="w3-row w3-section">
+          <div class="w3-col w3-margin-top" style="width: 50px">
+            <i class="w3-xlarge fa fa-user"></i></div>
+          <div class="w3-col m3">
+            <p id="p_regName" class="w3-white w3-border w3-padding" style="height: 35px;"></p>
+          </div>
+          <div class="w3-col m1">.</div>
+          <div class="w3-col w3-margin-top" style="width: 50px">
+            <i class="w3-xlarge fa fa-envelope-o"></i></div>
+          <div class="w3-rest">
+            <p id="p_regEmail" class="w3-white w3-border w3-padding" style="height: 35px;"></p>
+          </div>
+        </div>
+
+        <div class="w3-row">
+          <div class="w3-col" style="width: 50px">
+            <i class="w3-xlarge fa fa-user-circle"></i></div>
+          <div class="w3-rest">
+            <input id='i_gameName' class="w3-input w3-border" name="gameName" 
+                   type="text" placeholder="Game Name" required>
+          </div>
+        </div>
+
+        <div class="w3-row w3-section">
+          <div class="w3-col" style="width: 50px">
+            <i class="w3-xlarge fa fa-phone"></i></div>
+          <div class="w3-rest">
+            <input id='i_phone' class="w3-input w3-border" name="phone" 
+                   type="number" placeholder="Phone" required>
+          </div>
+        </div>
+
+        <div class="w3-row w3-section">
+          <div class="w3-col" style="width: 50px">
+            <img src="../assets/reg_images/noun_Gender Neutral_14064.png" 
+                 alt="Gender symbol" width="40" height="30"></div>
+          <div class="w3-col m3">
+            <select id="i_gender" style="height: 35px;">
+              <option value="f">female</option>
+              <option value="m">male</option>
+              <option value="o">other</option>
+              <option value="?">prefer not to say</option>
+            </select>
+          </div>
+          <div class="w3-col m1">.</div>
+          <div class="w3-col" style="width: 50px">
+            <img src="../assets/reg_images/noun_age_2941875.png" 
+                 alt="age" width="40" height="40"></div>
+          <div class="w3-rest">
+            <input id='i_age' class="w3-input w3-border" name="age"
+                   min="16" max="100"
+                   type="number" placeholder="Age" required>
+          </div>
+        </div>
+
+        <div class="w3-row w3-section">
+          <div class="w3-col" style="width: 50px">
+            <img src="../assets/reg_images/noun_Number_2453943.png" 
+                 alt="suburb" width="45" height="45"></div>
+          <div class="w3-col m2">
+            <input id='i_addrNum' class="w3-input w3-border" name="addrNum"
+                   min="1" 
+                   type="number" placeholder="Number" required>
+          </div>
+          <div class="w3-col m1">.</div>
+          <div class="w3-col" style="width: 50px">
+            <img src="../assets/reg_images/noun_street_104295.png" 
+                 alt="street" width="30" height="30"></div>
+          <div class="w3-rest">
+            <input id='i_addrSt' class="w3-input w3-border" name="addrSt" 
+                   type="text" placeholder="Street" required>
+          </div>
+        </div>
+
+        <div class="w3-row w3-section">
+          <div class="w3-col" style="width: 50px">
+            <img src="../assets/reg_images/noun_neighborhood_1240929.png" 
+                 alt="suburb" width="45" height="45"></div>
+          <div class="w3-col m4">
+            <input id='i_addrSuburb' class="w3-input w3-border" name="addrSuburb" 
+                   type="text" placeholder="Suburb" required>
+          </div>
+          <div class="w3-col m1">.</div>
+          <div class="w3-col" style="width: 50px">
+            <img src="../assets/reg_images/noun_City_3386652.png" 
+                 alt="city" width="40" height="40"></div>
+          <div class="w3-rest">
+            <input id='i_addrCity' class="w3-input w3-border" name="addrCity" 
+                   type="text" placeholder="City" required>
+          </div>
+        </div>
+
+        <div class="w3-row w3-section">
+          <div class="w3-col" style="width: 50px">
+            <img src="../assets/reg_images/noun_postcode_944762.png" 
+                 alt="post code" width="40" height="40"></div>
+          <div class="w3-col m2">
+            <input id='i_addrPostCode' class="w3-input w3-border" name="addrPostCode"
+                   title="Four digit post code" pattern="[09]{4}"  
+                   type="number" placeholder="Post Code" required>
+          </div>
+          <div class="w3-col m1">.</div>
+          <div class="w3-rest">
+            <button class="w3-button w3-block w3-blue w3-ripple 
+                           w3-padding w3-border" 
+                    onclick="reg_regDetailsEntered()" 
+                    value="Submit">click to register
+            </button>
+          </div>
+        </div>
+      </form>
+    </main>
+  </section>
+
+  <!--***********************************************************
+		FIREBASE & DEBUG STATUS
+  ************************************************************-->
+  <footer id="s_fbStatus" class="w3-grey">
+    <div class="w3-padding w3-lightGrey">
+      <p class="p_fbStatus">login:    <span id="p_fbLogin">    n/a</span></p>
+      <p class="p_fbStatus">read rec: <span id="p_fbReadRec">  n/a</span></p>
+      <p class="p_fbStatus">read all: <span id="p_fbReadAll">  n/a</span></p>
+      <p class="p_fbStatus">write:    <span id="p_fbWriteRec"> n/a</span></p>
+      <p class="p_fbStatus">readon:   <span id="p_fbReadOn">   n/a</span></p>
+      <p class="p_fbStatus">update:   <span id="p_fbUpdateRec">n/a</span></p>
+      <p class="p_fbStatus">delete:   <span id="p_fbDeleteRec">n/a</span></p>
+      <p class="p_fbStatus">debug:    <span id="p_debug">      n/a</span></p>
+    </div>
+  </footer>
+
+</body>
+</html>
+<!--*************************************************************
+  END OF REG.HTML
+**************************************************************-->

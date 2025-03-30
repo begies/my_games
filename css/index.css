@@ -1,0 +1,124 @@
+/*************************************************************
+  index.css
+
+  Written by Mr Bob, Term 4 2022
+  Style landing page
+    v1 Basic layout
+*************************************************************/
+html, body {
+  margin: 0px;
+  padding: 0px;
+  font-family: tahoma;
+  color: black;
+  height: 100%;
+}
+
+/*------------------------------------------------------*
+  LANDING page styling
+/*-----------------------------------------------------*/
+#s_landingPage {
+  display: block;
+  height: 90vh;
+  width: 100%;
+}
+
+.s_landingContainer {
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+}
+
+.s_landingContainer span {
+  text-transform: uppercase;
+  display: block;
+}
+
+.s_landingText {
+  font-size: 60px;
+  font-weight: 700;
+  letter-spacing: 8px;
+  margin-bottom: 20px;
+  position: relative;
+  animation: text 3s 1;
+}
+
+.button1 {
+  background-color: red;
+  padding: 10px 20px; 
+  color: white; 
+  border: none;
+  animation: buttonFade 3s 1;
+  font-weight: bold;
+}
+
+@keyframes buttonFade {
+  0%{
+    opacity: 0;
+  }
+  90%{
+    opacity: 0;
+  }
+  100%{
+    opacity: 1;
+  }
+}
+
+.button1:hover {
+  background-color: red;
+  color: black;
+}
+
+@keyframes text {
+  0%{
+    color: white;
+    margin-bottom: -40px;
+  }
+  30% {
+    letter-spacing: 25px;
+    margin-bottom: -40px;
+  }
+  85% {
+    letter-spacing: 8px;
+    margin-bottom: -40px;
+  }
+}
+
+.s_landingH {
+  height: 12vh;
+}
+
+.gHeight {
+  height: 82vh;
+}
+
+.bgImage {
+  background-image: url("../assets/background/bouncingBalls_lowres.gif");
+  height: 100%; 
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+/*------------------------------------------------------*
+  Set in page div height. 12% + 78% = 90% 
+  giving space for firebase status at bottom of pages.
+/*-----------------------------------------------------*/
+.hHead {
+  height:  12vh;  /* this div 12% screen height */ 
+}
+
+.hMain {
+  height:  78vh;  /* this div 78% screen height */ 
+}
+
+footer {
+  display: none;
+}
+
+/*************************************************************
+/*    END OF CSS
+*************************************************************/
